@@ -10,31 +10,27 @@ import {
 } from "@material-ui/core";
 import ResultTable from "./components/ResultTable";
 
-import axios from "axios";
-import { find } from "./Api";
+// import axios from "axios";
+import { find, TotalOnboard } from "./Api";
 
 function App() {
   const [auth, setAuth] = useState(false);
-  const [data, setData] = useState({
-    totalOnboard: 0,
-    shipment: [],
-  });
+  const [totalOnboard, setTotalOnboard] = useState(0);
+  const [data, setData] = useState([]); // set shipment data
 
   const [sform, setSform] = useState({
     blnumber: "",
     status: "",
   });
 
+  const refreshTotalOnboard = () => {
+    TotalOnboard((count) => setTotalOnboard(count));
+  };
   useEffect(() => {
     // fetch initail data when Authenticated
     if (auth) {
       // Fetching Total Onboard Shipments
-      axios
-        .get("http://localhost:5000/api/shipment/totalOnboard")
-        .then((res) => {
-          console.log(res);
-          setData({ ...data, totalOnboard: res.data.count });
-        });
+      refreshTotalOnboard();
       // // Fetching AllData At start
       // axios.get("http://localhost:5000/api/shipment/all").then((res) => {
       //   console.log(res);
@@ -46,7 +42,7 @@ function App() {
   useEffect(() => {
     find(sform, (res) => {
       // console.log({ res });
-      setData({ ...data, shipment: res });
+      setData(res);
     });
   }, [sform]);
 
@@ -93,15 +89,12 @@ function App() {
           </div>
           <div className="onboard wbox">
             <p>Number of Onboard Shipment</p>
-            <h1>{data.totalOnboard}</h1>
+            <h1 onClick={refreshTotalOnboard}>{totalOnboard}</h1>
           </div>
         </div>
 
         <div className="col2 wbox">
-          <ResultTable
-            data={data.shipment}
-            setData={(shipment) => setData({ ...data, shipment })}
-          />
+          <ResultTable data={data} setData={setData} />
         </div>
       </div>
     </>
