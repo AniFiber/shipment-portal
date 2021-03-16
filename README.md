@@ -4,6 +4,8 @@
 
 NodeJs 
 
+MongoDB Atlas
+
 VsCode 
 
 npm i -g nodemon 
