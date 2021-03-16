@@ -78,9 +78,9 @@ function App() {
                 value={sform.status}
                 onChange={(e) => setSform({ ...sform, status: e.target.value })}
               >
-                {/* <MenuItem value="">
-                <em>None</em>
-              </MenuItem> */}
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
                 <MenuItem value="Onboard">Onboard</MenuItem>
                 <MenuItem value="Arrived Depot">Arrived Depot</MenuItem>
                 <MenuItem value="Delivered">Delivered</MenuItem>
