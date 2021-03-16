@@ -23,9 +23,10 @@ const Actions = () => {
 
 export default function BasicTable({ data, setData }) {
   const getSearch = (e) => {
-    // let data = search(e.target.value);
-    // console.log({ data });
-    // setData();
+    search(e.target.value, (res) => {
+      console.log({ res });
+      setData(res);
+    });
   };
 
   return (

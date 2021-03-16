@@ -9,6 +9,9 @@ router.get("/CreateDemoData", (req, res) => {
     { blnumber: "BL9234567", status: "Onboard" },
     { blnumber: "BL1256458", status: "Onboard" },
     { blnumber: "BL5678453", status: "Delivered" },
+    { blnumber: "BL9256767", status: "Onboard" },
+    { blnumber: "BL5626458", status: "Onboard" },
+    { blnumber: "BL1458453", status: "Arrived Depot" },
   ]);
   res.send("Demo Data Created!!");
 });
@@ -34,6 +37,13 @@ router.get("/all", (req, res) => {
 // Find Specific shipment by status & blnumber
 router.post("/find", (req, res) => {
   // console.log(req.body);
+
+  if (req.body.query.blnumber) {
+    req.body.query.blnumber = {
+      $regex: new RegExp(req.body.query.blnumber, "i"),
+    };
+  }
+
   ShipmentDB.find(req.body.query, (err, data) => {
     if (err) {
       res.status(400).json("Error: " + err);
@@ -45,7 +55,7 @@ router.post("/find", (req, res) => {
   });
 });
 
-//
+// Bonus Part - Search
 router.post("/search", async (req, res) => {
   let docs;
   try {

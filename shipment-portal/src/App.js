@@ -11,12 +11,18 @@ import {
 import ResultTable from "./components/ResultTable";
 
 import axios from "axios";
+import { find } from "./Api";
 
 function App() {
   const [auth, setAuth] = useState(false);
   const [data, setData] = useState({
     totalOnboard: 0,
     shipment: [],
+  });
+
+  const [sform, setSform] = useState({
+    blnumber: "",
+    status: "",
   });
 
   useEffect(() => {
@@ -37,12 +43,18 @@ function App() {
     }
   }, [auth]);
 
+  useEffect(() => {
+    find(sform, (res) => {
+      // console.log({ res });
+      setData({ ...data, shipment: res });
+    });
+  }, [sform]);
+
   if (!auth) {
     return <Login loginUser={setAuth} />;
   }
   return (
     <>
-      {console.log({ data })}
       <nav>
         <h1 className="head">Shipment Portal</h1>
         <button className="logout" onClick={() => setAuth(false)}>
@@ -57,6 +69,8 @@ function App() {
               label="BL Number"
               variant="filled"
               className="search__input"
+              value={sform.slnumber}
+              onChange={(e) => setSform({ ...sform, blnumber: e.target.value })}
             />
             <FormControl variant="filled" className="search__input">
               <InputLabel id="demo-simple-select-filled-label">
@@ -65,8 +79,8 @@ function App() {
               <Select
                 labelId="demo-simple-select-filled-label"
                 id="demo-simple-select-filled"
-                // value={age}
-                // onChange={handleChange}
+                value={sform.status}
+                onChange={(e) => setSform({ ...sform, status: e.target.value })}
               >
                 {/* <MenuItem value="">
                 <em>None</em>
