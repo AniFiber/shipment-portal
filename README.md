@@ -18,5 +18,6 @@ Postman
 
 ### Config
 
-Login Id   - admin
-      Pass - admin123
+Login 
+- Id   - admin    
+- Pass - admin123 
