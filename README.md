@@ -2,7 +2,7 @@
 
 Install Software
 
-NodeJs
-VsCode
-npm i -g nodemon
+NodeJs 
+VsCode 
+npm i -g nodemon 
 
