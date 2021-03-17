@@ -14,13 +14,13 @@ export default function FormDialog({ form, setForm, data, setData }) {
     setForm(null);
   };
   const handelConfirm = () => {
+    // Updating changes to server database
     update(form, (res) => {
       if (res?.ok) {
+        //If OK, Reflecting changes back to local/offline/browser data
         let i = data.findIndex((shipment) => shipment._id === form._id);
-
         let newShipment = [...data];
         newShipment[i] = form;
-
         // console.log({ newShipment });
         setData(newShipment);
 
@@ -44,8 +44,9 @@ export default function FormDialog({ form, setForm, data, setData }) {
             label="BL Number"
             type="text"
             fullWidth
-            disabled
+            // disabled
             value={form?.blnumber}
+            onChange={(e) => setForm({ ...form, blnumber: e.target.value })}
           />
           <FormControl fullWidth>
             <InputLabel id="editOption">Status</InputLabel>

@@ -106,6 +106,7 @@ router.post("/search", async (req, res) => {
   // console.log({ docs });
   res.send(docs);
 });
+
 router.post("/update/:id", (req, res) => {
   // console.log(req.body.query, req.params.id);
   ShipmentDB.updateOne({ _id: req.params.id }, req.body.query, (err, data) => {
