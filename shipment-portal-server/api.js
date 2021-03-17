@@ -38,13 +38,33 @@ router.get("/all", (req, res) => {
 router.post("/find", (req, res) => {
   // console.log(req.body);
 
-  if (req.body.query.blnumber) {
-    req.body.query.blnumber = {
-      $regex: new RegExp(req.body.query.blnumber, "i"),
-    };
-  }
+  let query = req.body.query;
 
-  ShipmentDB.find(req.body.query, (err, data) => {
+  // if (query.blnumber) {
+  //   let array = query.blnumber.split(",");
+
+  //   if (array.length) {
+  //     console.log({ array });
+  //     newArr = array.map((a) => {
+  //       return {
+  //         $regex: new RegExp(a, "i"),
+  //       };
+  //     });
+  //     console.log({ newArr });
+
+  //     query.blnumber = { $in: newArr };
+  //   } else {
+  //     query.blnumber = {
+  //       $regex: new RegExp(query.blnumber, "i"),
+  //     };
+  //   }
+  // }
+
+  query.blnumber = {
+    $regex: new RegExp(query.blnumber, "i"),
+  };
+
+  ShipmentDB.find(query, (err, data) => {
     if (err) {
       res.status(400).json("Error: " + err);
     } else {
@@ -87,7 +107,7 @@ router.post("/search", async (req, res) => {
   res.send(docs);
 });
 router.post("/update/:id", (req, res) => {
-  console.log(req.body.query, req.params.id);
+  // console.log(req.body.query, req.params.id);
   ShipmentDB.updateOne({ _id: req.params.id }, req.body.query, (err, data) => {
     if (err) {
       res.status(400).json("Error: " + err);
