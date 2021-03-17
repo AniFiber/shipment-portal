@@ -7,7 +7,6 @@
 - Postman (for checking API endpoints)
 
 
-
 # Project
 
 ### Shipment Portal 
@@ -45,6 +44,16 @@
 
 ####  BackEnd
  - Update status change to database ✔️ (using MongoDB here on localhost)
+
+
+ # How to Run!! 
+ 1.   Go inside the folder 👉 shipment-portal-server
+	  - npm  i	[install all of the dependencies] `only first time`
+	  - start MongoDB `or make sure it's already running`
+	  - npm start or nodemon app.js `[ nodemon reloads the server every-time the file's changes ]`
+ 2.  Go inside the folder 👉 shipment-portal 
+	 - npm i 
+	 - npm start
 
 
 ___
