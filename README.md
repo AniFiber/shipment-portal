@@ -18,6 +18,13 @@
 
 ### Shipment Portal Server
   
+##### Api Endpoint's `http://localhost:5000/api/shipment`
+- `/totalOnboard` - To get onboard shipment count 
+- `/all` - Get all shipment
+- `/find` - To search BL + Status seperatly & together
+-  `/search` - Universal search for both BL and status
+- `/update/:id` - To update shipment details 
+- `/CreateDemoData` - (for Demo Purpose) - Creates 6 random data & add's it to database 
   
 
 # Project Requirements
