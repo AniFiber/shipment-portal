@@ -40,29 +40,29 @@ router.post("/find", (req, res) => {
 
   let query = req.body.query;
 
-  // if (query.blnumber) {
-  //   let array = query.blnumber.split(",");
+  if (query.blnumber) {
+    query.blnumber = {
+      $regex: new RegExp(query.blnumber, "i"),
+    };
 
-  //   if (array.length) {
-  //     console.log({ array });
-  //     newArr = array.map((a) => {
-  //       return {
-  //         $regex: new RegExp(a, "i"),
-  //       };
-  //     });
-  //     console.log({ newArr });
+    //   //   let array = query.blnumber.split(",");
 
-  //     query.blnumber = { $in: newArr };
-  //   } else {
-  //     query.blnumber = {
-  //       $regex: new RegExp(query.blnumber, "i"),
-  //     };
-  //   }
-  // }
+    //   //   if (array.length) {
+    //   //     console.log({ array });
+    //   //     newArr = array.map((a) => {
+    //   //       return {
+    //   //         $regex: new RegExp(a, "i"),
+    //   //       };
+    //   //     });
+    //   //     console.log({ newArr });
 
-  query.blnumber = {
-    $regex: new RegExp(query.blnumber, "i"),
-  };
+    //   //     query.blnumber = { $in: newArr };
+    //   //   } else {
+    //   //     query.blnumber = {
+    //   //       $regex: new RegExp(query.blnumber, "i"),
+    //   //     };
+    //   //   }
+  }
 
   ShipmentDB.find(query, (err, data) => {
     if (err) {

@@ -17,8 +17,6 @@
 -  *Pass* - admin123
 
 ### Shipment Portal Server
-
-  
   
   
 
