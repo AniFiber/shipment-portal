@@ -34,6 +34,7 @@ export const search = (query, callback) => {
 };
 export const find = (query, callback) => {
   // Validating, if any value is present then go to next line
+  query.blnumber = query.blnumber.trim();
   if (!query.blnumber && !query.status) return;
 
   // Here deleting the object key if it has a falsy value (like empty value/string, 👉 "" )

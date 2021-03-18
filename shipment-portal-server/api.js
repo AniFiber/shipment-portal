@@ -82,7 +82,7 @@ router.post("/find", (req, res) => {
   
   */
 
-  if (query.blnumber.trim()) {
+  if (query.blnumber?.trim()) {
     ////if (query.blnumber.indexOf(",") > -1) {  // Checking whether comma is present or not
 
     let array = query.blnumber.split(",");
