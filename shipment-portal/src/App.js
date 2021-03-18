@@ -14,6 +14,7 @@ import ResultTable from "./components/ResultTable";
 import { find, TotalOnboard } from "./Api";
 
 function App() {
+  // state is just like creating a variable but in a react way
   const [auth, setAuth] = useState(false);
   const [totalOnboard, setTotalOnboard] = useState(0);
   const [data, setData] = useState([]); // set shipment data
@@ -65,7 +66,9 @@ function App() {
               label="BL Number"
               variant="filled"
               className="search__input"
+              // Getting value from the state & putting it in the HTML
               value={sform.slnumber}
+              // Getting value from the HTML & putting it in the state
               onChange={(e) => setSform({ ...sform, blnumber: e.target.value })}
             />
             <FormControl variant="filled" className="search__input">
@@ -94,6 +97,7 @@ function App() {
         </div>
 
         <div className="col2 wbox">
+          {/* Calling component ResultTable and passing the state variable & function (i.e data,setData) */}
           <ResultTable data={data} setData={setData} />
         </div>
       </div>

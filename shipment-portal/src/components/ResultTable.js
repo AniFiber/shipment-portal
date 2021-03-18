@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+// Material UI imports
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -10,8 +12,8 @@ import InsertDriveFileIcon from "@material-ui/icons/InsertDriveFile";
 import EditIcon from "@material-ui/icons/Edit";
 import { IconButton, InputAdornment, TextField } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import { search } from "../Api";
 
+import { search } from "../Api";
 import EditForm from "./EditForm";
 
 export default function BasicTable({ data, setData }) {
@@ -19,8 +21,10 @@ export default function BasicTable({ data, setData }) {
   const [editForm, setEditForm] = useState(null);
 
   const getSearch = (e) => {
+    // Calling Search Api
     search(e.target.value, (res) => {
       console.log({ res });
+      // putting api response in the react-state
       setData(res);
     });
   };
@@ -40,6 +44,7 @@ export default function BasicTable({ data, setData }) {
             Shipment
           </h2>
 
+          {/* Search Field */}
           <TextField
             id="standard-search"
             type="search"
@@ -53,6 +58,8 @@ export default function BasicTable({ data, setData }) {
             }}
           />
         </div>
+
+        {/* Search Results | Shipments */}
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
