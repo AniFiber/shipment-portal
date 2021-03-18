@@ -57,7 +57,8 @@
 	 - npm i 
 	 - npm start
 
-`On Second Run just 'npm start' on both folders`
+`On Second Run just 'npm start' on both folders  
+OR from the parent folder run these commands 👉 "npm run server" and "npm run app" `
 
 # Learn More
 
