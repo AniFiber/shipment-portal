@@ -31,8 +31,8 @@
 ####  FrontEnd
 - Login Page - **10%**
 - Search  - **30%**
-	- BL + Status [✔️ - but currently single value search]
-	- Universal search for both BL and status [✔️ - done single value]
+	- BL + Status [✔️ - done multiple value search]
+	- Universal search for both BL and status [✔️ - done only single value]
 -	- Validation (at least one search criteria filled in) ✔️ - **10%**
 -	Showing Search result - **30%**
 	- Table format ✔️
