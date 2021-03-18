@@ -105,7 +105,9 @@ function App() {
           </div>
           <div className="onboard wbox">
             <p>Number of Onboard Shipment</p>
-            <h1 onClick={refreshTotalOnboard}>{totalOnboard}</h1>
+            <h1 title="Click to Refresh!!" onClick={refreshTotalOnboard}>
+              {totalOnboard}
+            </h1>
           </div>
         </div>
 
