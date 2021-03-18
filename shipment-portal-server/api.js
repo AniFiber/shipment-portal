@@ -56,8 +56,8 @@ router.post("/find", (req, res) => {
       }
     }
 
-
   */
+
   let query = req.body.query;
   /*
     query = {
@@ -66,29 +66,34 @@ router.post("/find", (req, res) => {
       }
   */
 
+  // 1st Method
   // To search insensitive case (here bl1234567 & BL1234567 would be the same)
-  query.blnumber = {
-    $regex: new RegExp(query.blnumber, "i"), // will be like: $regex: /bl123/i
-  };
+  // query.blnumber = {
+  //   $regex: new RegExp(query.blnumber, "i"), // will be like: $regex: /bl123/i
+  // };
 
-  // if (query.blnumber) {
-  //       let array = query.blnumber.split(",");
-  //       if (array.length) {
-  //         console.log({ array });
-  //         newArr = array.map((a) => {
-  //           return {
-  //             $regex: new RegExp(a, "i"),
-  //           };
-  //         });
-  //         console.log({ newArr });
+  // Another Method
+  if (query.blnumber) {
+    if (query.blnumber.indexOf(",") > -1) {
+      let array = query.blnumber.split(",");
+      console.log({ array });
+      // newArr = array.map((a) => {
+      //   return {
+      //     $regex: new RegExp(a, "i"),
+      //   };
+      // });
+      // console.log({ newArr });
+      // query.blnumber = { $in: newArr };
 
-  //         query.blnumber = { $in: newArr };
-  //       } else {
-  //         query.blnumber = {
-  //           $regex: new RegExp(query.blnumber, "i"),
-  //         };
-  //       }
-  // }
+      query.blnumber = { $in: array };
+    } else {
+      query.blnumber = {
+        $regex: new RegExp(query.blnumber, "i"),
+      };
+    }
+  }
+
+  console.log({ query });
 
   ShipmentDB.find(query, (err, data) => {
     if (err) {
