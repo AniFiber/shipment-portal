@@ -1,3 +1,4 @@
+// We will use axios to make server/api calls
 import axios from "axios";
 
 const Server = "http://localhost:5000/api";
@@ -17,6 +18,7 @@ export const TotalOnboard = (callback) => {
 //
 
 export const search = (query, callback) => {
+  // Validating whether query is present or not (if empty then stoping next line execution)
   if (!query) return;
 
   axios
@@ -28,8 +30,10 @@ export const search = (query, callback) => {
     .catch((err) => console.error(err));
 };
 export const find = (query, callback) => {
+  // Validating, if any value is present then go to next line
   if (!query.blnumber && !query.status) return;
 
+  // Here deleting the object key if it has a falsy value (like empty value/string, 👉 "" )
   let obj = { ...query };
   Object.keys(obj).forEach((k) => !obj[k] && delete obj[k]);
 
