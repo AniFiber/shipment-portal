@@ -1,9 +1,16 @@
 const express = require("express");
+// Importing shipment file exports & Initializing it with ShipmentDB
 const ShipmentDB = require("./db/shipment");
 
 const router = express.Router();
 
-// For Demo Purpose Only
+/*
+This file is now imported in app.js & called by "app.use("/api/shipment", Api)" so the final 
+address would this "/api/shipment" ➕ any of the below endpoints
+Like for "/all" it would be 👉 "http://localhost:5000/api/shipment/all"
+*/
+
+// To Create Demo Data for first time
 router.get("/CreateDemoData", (req, res) => {
   ShipmentDB.create([
     { blnumber: "BL9234567", status: "Onboard" },
@@ -40,29 +47,29 @@ router.post("/find", (req, res) => {
 
   let query = req.body.query;
 
-  if (query.blnumber) {
-    query.blnumber = {
-      $regex: new RegExp(query.blnumber, "i"),
-    };
+  // To search insensitive case (here bl1234567 & BL1234567 would be the same)
+  query.blnumber = {
+    $regex: new RegExp(query.blnumber, "i"),
+  };
 
-    //   //   let array = query.blnumber.split(",");
+  // if (query.blnumber) {
+  //       let array = query.blnumber.split(",");
+  //       if (array.length) {
+  //         console.log({ array });
+  //         newArr = array.map((a) => {
+  //           return {
+  //             $regex: new RegExp(a, "i"),
+  //           };
+  //         });
+  //         console.log({ newArr });
 
-    //   //   if (array.length) {
-    //   //     console.log({ array });
-    //   //     newArr = array.map((a) => {
-    //   //       return {
-    //   //         $regex: new RegExp(a, "i"),
-    //   //       };
-    //   //     });
-    //   //     console.log({ newArr });
-
-    //   //     query.blnumber = { $in: newArr };
-    //   //   } else {
-    //   //     query.blnumber = {
-    //   //       $regex: new RegExp(query.blnumber, "i"),
-    //   //     };
-    //   //   }
-  }
+  //         query.blnumber = { $in: newArr };
+  //       } else {
+  //         query.blnumber = {
+  //           $regex: new RegExp(query.blnumber, "i"),
+  //         };
+  //       }
+  // }
 
   ShipmentDB.find(query, (err, data) => {
     if (err) {
@@ -78,6 +85,8 @@ router.post("/find", (req, res) => {
 // Bonus Part - Search
 router.post("/search", async (req, res) => {
   let docs;
+
+  // To search a value both fields (i.e blnumber & status)
   try {
     docs = await ShipmentDB.aggregate([
       {
