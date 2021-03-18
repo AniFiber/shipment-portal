@@ -4,8 +4,16 @@ const Schema = mongoose.Schema;
 
 // Here we are defining the things/schema which we to store in database
 const shipmentSchema = new Schema({
-  blnumber: String,
-  status: String,
+  // _id -> by default mongoose will make unique id for each documents
+
+  blnumber: {
+    type: String, // Defining the data type
+    text: true, // Declares a full text index.
+  },
+  status: {
+    type: String,
+    text: true,
+  },
 });
 
 // which is named "Shipment" for this collection of data
