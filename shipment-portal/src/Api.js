@@ -21,6 +21,8 @@ export const search = (query, callback) => {
   // Validating whether query is present or not (if empty then stoping next line execution)
   if (!query) return;
 
+  query = query.trim(); // removing trailing whitespace
+
   axios
     .post(Server + "/shipment/search", { query })
     .then((res) => {
