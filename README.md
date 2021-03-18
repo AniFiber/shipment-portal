@@ -48,9 +48,11 @@
 
  # How to Run!! 
  1.   Go inside the folder 👉 shipment-portal-server
-	  - npm  i	[install all of the dependencies] `only first time`
+	  - npm  i	(install's all of the dependencies) `run only first time`
 	  - start MongoDB `or make sure it's already running`
-	  - npm start or nodemon app.js `[ nodemon reloads the server every-time the file's changes ]`
+	  - npm start or nodemon app.js (nodemon reloads the server every-time the file's changes)
+	  -  go to `http://localhost:5000/api/shipment/CreateDemoData` (it creates demo data) `only first time`
+
  2.  Go inside the folder 👉 shipment-portal 
 	 - npm i 
 	 - npm start
