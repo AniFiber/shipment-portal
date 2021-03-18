@@ -45,11 +45,30 @@ router.get("/all", (req, res) => {
 router.post("/find", (req, res) => {
   // console.log(req.body);
 
+  /*  On post request we recieve data in "req.body" & here we are recieving data as
+  a json object.
+  So it will be like :
+  req.body = 
+    {
+      "query":{
+        "blnumber":"bl123", 
+        "status":"Onboard"
+      }
+    }
+
+
+  */
   let query = req.body.query;
+  /*
+    query = {
+        "blnumber":"bl123", 
+        "status":"Onboard"
+      }
+  */
 
   // To search insensitive case (here bl1234567 & BL1234567 would be the same)
   query.blnumber = {
-    $regex: new RegExp(query.blnumber, "i"),
+    $regex: new RegExp(query.blnumber, "i"), // will be like: $regex: /bl123/i
   };
 
   // if (query.blnumber) {
