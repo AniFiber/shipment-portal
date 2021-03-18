@@ -57,7 +57,7 @@
 	 - npm i 
 	 - npm start
 
-
+`On Second Run just 'npm start' on both folders`
 ___
 
 > Made with [StackEdit.io](https://stackedit.io/app)
