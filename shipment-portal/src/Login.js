@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
+// Css file for styling
 import "./Login.css";
 
 export default function Login({ loginUser }) {
+  // state is just like creating a variable but in a react way
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,7 +26,9 @@ export default function Login({ loginUser }) {
         <lable>Email Address / Username</lable>
         <input
           type="text"
+          // Getting value from the state & putting it in the HTML
           value={user}
+          // Onchange getting value from the HTML & putting it in the state
           onChange={(e) => setUser(e.target.value)}
         />
         <lable>Password</lable>
