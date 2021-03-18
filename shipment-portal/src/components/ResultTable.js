@@ -46,7 +46,6 @@ export default function BasicTable({ data, setData }) {
 
           {/* Search Field */}
           <TextField
-            id="standard-search"
             type="search"
             onChange={getSearch}
             InputProps={{
@@ -60,7 +59,7 @@ export default function BasicTable({ data, setData }) {
         </div>
 
         {/* Search Results | Shipments */}
-        <Table aria-label="simple table">
+        <Table>
           <TableHead>
             <TableRow>
               <TableCell>Actions</TableCell>
@@ -76,7 +75,6 @@ export default function BasicTable({ data, setData }) {
                   <IconButton
                     onClick={() => setEditForm(row)}
                     // onClick={() => setEditForm(true)}
-                    aria-label="edit form"
                   >
                     <EditIcon />
                   </IconButton>
