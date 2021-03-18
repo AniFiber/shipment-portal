@@ -9,7 +9,8 @@ export const TotalOnboard = (callback) => {
   axios
     .get(Server + "/shipment/totalOnboard")
     .then((res) => {
-      console.log(res);
+      // console.log(res);
+      console.log(res.data);
       callback(res.data.count);
     })
     .catch((err) => console.error(err));
