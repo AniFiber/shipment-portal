@@ -108,47 +108,55 @@ router.post("/find", (req, res) => {
 
 // Bonus Part - Search
 router.post("/search", async (req, res) => {
-  ShipmentDB.find({ $text: { $search: req.body.query } }, (err, docs) => {
-    if (err) {
-      res.status(400).json("Error: " + err);
-    } else {
-      // console.log(data);
-      // res.json(data);
-      res.send(docs);
-    }
-  });
+  // 1st Method
+  // ShipmentDB.find(
+  //   {
+  //     $text: {
+  //       $search: req.body.query,
+  //     },
+  //   },
+  //   (err, docs) => {
+  //     if (err) {
+  //       res.status(400).json("Error: " + err);
+  //     } else {
+  //       // console.log(data);
+  //       // res.json(data);
+  //       res.send(docs);
+  //     }
+  //   }
+  // );
 
   // 2nd Method
-  // let docs;
+  let docs;
 
-  // To search a value both fields (i.e blnumber & status)
-  // try {
-  //   docs = await ShipmentDB.aggregate([
-  //     {
-  //       $match: {
-  //         $or: [
-  //           {
-  //             blnumber: {
-  //               $regex: req.body.query,
-  //               $options: "i",
-  //             },
-  //           },
-  //           {
-  //             status: {
-  //               $regex: req.body.query,
-  //               $options: "i",
-  //             },
-  //           },
-  //         ],
-  //       },
-  //     },
-  //   ]);
-  // } catch (err) {
-  //   res.status(400).json("Error: " + err);
-  // }
+  //To search a value both fields (i.e blnumber & status)
+  try {
+    docs = await ShipmentDB.aggregate([
+      {
+        $match: {
+          $or: [
+            {
+              blnumber: {
+                $regex: req.body.query,
+                $options: "i",
+              },
+            },
+            {
+              status: {
+                $regex: req.body.query,
+                $options: "i",
+              },
+            },
+          ],
+        },
+      },
+    ]);
+  } catch (err) {
+    res.status(400).json("Error: " + err);
+  }
 
-  //// console.log({ docs });
-  // res.send(docs);
+  // console.log({ docs });
+  res.send(docs);
 });
 
 router.post("/update/:id", (req, res) => {

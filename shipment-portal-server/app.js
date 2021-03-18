@@ -20,6 +20,7 @@ app.use(cors());
 mongoose.connect("mongodb://localhost/shipment-portal", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true,
 });
 
 // Checking Database Connection
