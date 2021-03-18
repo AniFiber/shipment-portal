@@ -72,25 +72,37 @@ router.post("/find", (req, res) => {
   //   $regex: new RegExp(query.blnumber, "i"), // will be like: $regex: /bl123/i
   // };
 
-  // Another Method
-  if (query.blnumber) {
-    if (query.blnumber.indexOf(",") > -1) {
-      let array = query.blnumber.split(",");
-      console.log({ array });
-      // newArr = array.map((a) => {
-      //   return {
-      //     $regex: new RegExp(a, "i"),
-      //   };
-      // });
-      // console.log({ newArr });
-      // query.blnumber = { $in: newArr };
+  // Another Method | To search Multiple values
+  /* Here for multiple values query can be like
+  
+  query = {
+    blnumber: "BL1256458, BL9256767", 
+    status: "Onboard"
+  }
+  
+  */
 
-      query.blnumber = { $in: array };
-    } else {
-      query.blnumber = {
-        $regex: new RegExp(query.blnumber, "i"),
-      };
-    }
+  if (query.blnumber) {
+    //if (query.blnumber.indexOf(",") > -1) {  // Checking whether comma is present or not
+
+    let array = query.blnumber.split(",");
+    // let array = query.blnumber.split(",").map((item) => item.trim());
+    // array = array.map((a) => new RegExp(a, "i"));
+    let newArr = [];
+    array.forEach((a) => {
+      a.trim() && newArr.push(new RegExp(a, "i"));
+      // a && newArr.push(new RegExp(a, "i"));
+    });
+
+    array = newArr;
+    console.log("Array->", array);
+    query.blnumber = { $in: array };
+
+    // } else {
+    //   query.blnumber = {
+    //     $regex: new RegExp(query.blnumber, "i"),
+    //   };
+    // }
   }
 
   console.log({ query });
