@@ -62,20 +62,20 @@
 # Learn More
 
 #### React Cheatsheet
-https://devhints.io/react
-http://www.developer-cheatsheets.com/react
-https://www.freecodecamp.org/news/react-cheatsheet-with-real-world-examples/
+https://devhints.io/react  
+http://www.developer-cheatsheets.com/react  
+https://www.freecodecamp.org/news/react-cheatsheet-with-real-world-examples/  
 
 #### JavaScript Cheatsheet
-https://github.com/iLoveCodingOrg/javascript-cheatsheet
+https://github.com/iLoveCodingOrg/javascript-cheatsheet  
 https://github.com/iLoveCodingOrg/javascript-cheatsheet/blob/master/js-cheatsheet.pdf
 
 #### Css Cheatsheet
-https://github.com/iLoveCodingOrg/css-cheatsheet
+https://github.com/iLoveCodingOrg/css-cheatsheet  
 https://github.com/iLoveCodingOrg/css-cheatsheet/blob/master/css-cheatsheet.pdf
 
 #### Html Cheatsheet
-https://github.com/iLoveCodingOrg/html-cheatsheet
+https://github.com/iLoveCodingOrg/html-cheatsheet  
 https://github.com/iLoveCodingOrg/html-cheatsheet/blob/master/html-cheatsheet.pdf
 
 
