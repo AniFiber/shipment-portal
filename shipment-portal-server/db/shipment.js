@@ -8,7 +8,7 @@ const shipmentSchema = new Schema({
 
   blnumber: {
     type: String, // Defining the data type
-    text: true, // Declares a full text index.
+    text: true, // Declares a full text index. //to make is accessible for searching
   },
   status: {
     type: String,
