@@ -15,23 +15,31 @@ import { find, TotalOnboard } from "./Api";
 
 function App() {
   // state is just like creating a variable but in a react way
+
+  // for User Authentication (whether logged in or not)
   const [auth, setAuth] = useState(false);
+  // for onboard count
   const [totalOnboard, setTotalOnboard] = useState(0);
+  // for storing search results/shipments
   const [data, setData] = useState([]); // set shipment data
 
+  // for first searching form
   const [sform, setSform] = useState({
     blnumber: "",
     status: "",
   });
 
   const refreshTotalOnboard = () => {
+    // Fetching onboard count from the api and putting it in the state
     TotalOnboard((count) => setTotalOnboard(count));
   };
+
   useEffect(() => {
     // fetch initail data when Authenticated
     if (auth) {
-      // Fetching Total Onboard Shipments
+      //firstly Fetching Total Onboard Shipments when user is logged in
       refreshTotalOnboard();
+
       // // Fetching AllData At start
       // axios.get("http://localhost:5000/api/shipment/all").then((res) => {
       //   console.log(res);
@@ -41,15 +49,20 @@ function App() {
   }, [auth]);
 
   useEffect(() => {
+    // calling api "/find" whenever search form field values are changing
     find(sform, (res) => {
       // console.log({ res });
+      // And setting the results/response in the satte
       setData(res);
     });
   }, [sform]);
 
   if (!auth) {
+    // If not logged in show Login Page/Component
     return <Login loginUser={setAuth} />;
   }
+
+  // if login then Dashboard
   return (
     <>
       <nav>
