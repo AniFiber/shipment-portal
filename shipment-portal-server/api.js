@@ -82,8 +82,8 @@ router.post("/find", (req, res) => {
   
   */
 
-  if (query.blnumber) {
-    //if (query.blnumber.indexOf(",") > -1) {  // Checking whether comma is present or not
+  if (query.blnumber.trim()) {
+    ////if (query.blnumber.indexOf(",") > -1) {  // Checking whether comma is present or not
 
     let array = query.blnumber.split(",");
     // let array = query.blnumber.split(",").map((item) => item.trim());
@@ -98,11 +98,11 @@ router.post("/find", (req, res) => {
     console.log("Array->", array);
     query.blnumber = { $in: array };
 
-    // } else {
-    //   query.blnumber = {
-    //     $regex: new RegExp(query.blnumber, "i"),
-    //   };
-    // }
+    //// } else {
+    ////   query.blnumber = {
+    ////     $regex: new RegExp(query.blnumber, "i"),
+    ////   };
+    //// }
   }
 
   console.log({ query });
