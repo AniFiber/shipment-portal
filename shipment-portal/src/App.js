@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Login from "./Login";
-import "./App.css";
 
 import Dashboard from "./components/Dashboard";
 
