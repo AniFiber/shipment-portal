@@ -80,6 +80,14 @@ https://github.com/iLoveCodingOrg/html-cheatsheet
 https://github.com/iLoveCodingOrg/html-cheatsheet/blob/master/html-cheatsheet.pdf
 
 
+# Used Material-UI Templates
+
+https://material-ui.com/getting-started/templates/dashboard/  
+https://github.com/mui-org/material-ui/tree/master/docs/src/pages/getting-started/templates/dashboard  
+
+https://material-ui.com/getting-started/templates/sign-in/  
+https://github.com/mui-org/material-ui/tree/master/docs/src/pages/getting-started/templates/sign-in
+
 ___
 
 > Made with [StackEdit.io](https://stackedit.io/app)
