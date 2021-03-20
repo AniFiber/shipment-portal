@@ -18,12 +18,12 @@ import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import { mainListItems, secondaryListItems } from "./listItems";
+import { mainListItems, secondaryListItems } from "./components/listItems";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-import OnboardCount from "./OnboardCount";
-import ResultTable from "./ResultTable";
-import SearchForm from "./SearchForm";
+import OnboardCount from "./components/OnboardCount";
+import ResultTable from "./components/ResultTable";
+import SearchForm from "./components/SearchForm";
 
 function Copyright() {
   return (

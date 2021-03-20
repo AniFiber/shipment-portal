@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Login from "./Login";
 
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./Dashboard";
 
 function App() {
   // state is just like creating a variable but in a react way
